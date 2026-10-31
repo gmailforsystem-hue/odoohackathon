@@ -1,4 +1,4 @@
-/**
+/*
  * Subscriptions Page Controller
  * Manages subscription lifecycle transitions, search/filtering, line items, and add-on toggling.
  */
