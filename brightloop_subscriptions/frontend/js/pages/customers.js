@@ -1,4 +1,4 @@
-/**
+/*
  * Customers CRM Page Controller
  * Manages customer account directory and customer profile overview.
  */
