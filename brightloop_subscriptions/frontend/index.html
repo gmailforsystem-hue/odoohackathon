@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brightloop Software | Enterprise Subscription Management</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="sidebar-brand-text">Brightloop</div>
+          <div class="sidebar-brand-sub">Subscription Hub</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section-title">Overview</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a class="nav-item active" data-page="dashboard" href="#dashboard">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+              </svg>
+            </span>
+            <span>Dashboard</span>
+            <span class="nav-badge" id="badge-active-subs">...</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-section-title">Sales & Billing</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a class="nav-item" data-page="subscriptions" href="#subscriptions">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              </svg>
+            </span>
+            <span>Subscriptions</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-page="quotations" href="#quotations">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </span>
+            <span>Quotations</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-page="invoices" href="#invoices">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+              </svg>
+            </span>
+            <span>Invoices</span>
+            <span class="nav-badge" id="badge-overdue-invoices">...</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-page="payments" href="#payments">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+              </svg>
+            </span>
+            <span>Payments</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-section-title">Catalog & Rules</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a class="nav-item" data-page="products" href="#products">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </span>
+            <span>Products & Variants</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-page="plans" href="#plans">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </span>
+            <span>Billing Plans</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-page="discounts" href="#discounts">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>
+              </svg>
+            </span>
+            <span>Discounts & Promos</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-page="taxes" href="#taxes">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="21" x2="21" y2="21"/><line x1="3" y1="10" x2="21" y2="10"/>
+                <polyline points="5 6 12 3 19 6"/><line x1="6" y1="10" x2="6" y2="21"/>
+                <line x1="18" y1="10" x2="18" y2="21"/>
+              </svg>
+            </span>
+            <span>Tax Engine</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-page="customers" href="#customers">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </span>
+            <span>Customers CRM</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-section-title">Client & Administration</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a class="nav-item" data-page="portal" href="#portal">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </span>
+            <span>Customer Portal</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-page="team" href="#team">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </span>
+            <span>Team & RBAC</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-item" data-page="audit" href="#audit">
+            <span class="nav-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+            </span>
+            <span>Audit & Benchmark</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div>Brightloop Platform v2.4</div>
+        <div class="sidebar-status-indicator">
+          <span class="sidebar-dot"></span>
+          <span>Online</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Application Wrapper -->
+    <div class="main-wrapper">
+      <!-- Topbar Header -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <h1 class="page-title" id="topbar-title">Dashboard Overview</h1>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Latency Gauge (<2s requirement verification) -->
+          <div class="latency-indicator" id="latency-meter" title="API response time (Requirement: under 2.0s)">
+            <span class="latency-dot"></span>
+            <span id="latency-text">Query: 3ms</span>
+          </div>
+
+          <!-- Persona / Role Quick Switcher -->
+          <div class="role-switcher-container">
+            <span class="role-switcher-label">Role:</span>
+            <select class="role-select" id="active-persona-select">
+              <option value="admin" selected>Elena Vance (Admin)</option>
+              <option value="staff">Marcus Brody (Sales & Billing Staff)</option>
+              <option value="customer">David Miller (Customer - Apex Store)</option>
+            </select>
+            <span class="role-tag admin" id="persona-badge">ADMIN</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Page Views Container -->
+      <main class="page-container">
+        
+        <!-- 1. DASHBOARD VIEW -->
+        <section class="page-view active" id="view-dashboard">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Executive Finance & Subscriptions</h2>
+              <p class="view-subheading">Real-time recurring revenue, receivables health, and subscriber volume.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-secondary" onclick="app.refreshCurrentPage()">Refresh</button>
+              <button class="btn btn-primary" onclick="app.openBillingDayModal()">Run Billing Day Batch</button>
+            </div>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-label">Active Subscriptions</span>
+                <div class="kpi-icon-wrap">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-value" id="kpi-active-subs">-</div>
+              <div class="kpi-subtext highlight-green">Active billing accounts</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-label">Monthly Recurring (MRR)</span>
+                <div class="kpi-icon-wrap">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-value" id="kpi-mrr">$0.00</div>
+              <div class="kpi-subtext highlight-green">Normalized monthly run rate</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-label">Annual Run Rate (ARR)</span>
+                <div class="kpi-icon-wrap">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-value" id="kpi-arr">$0.00</div>
+              <div class="kpi-subtext">Annualized recurring projection</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-label">Cash Collected</span>
+                <div class="kpi-icon-wrap">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-value" id="kpi-collected">$0.00</div>
+              <div class="kpi-subtext highlight-green">Settled through payments</div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-label">Overdue Invoices</span>
+                <div class="kpi-icon-wrap">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="kpi-value" id="kpi-overdue">$0.00</div>
+              <div class="kpi-subtext highlight-red" id="kpi-overdue-count">0 invoices past due date</div>
+            </div>
+          </div>
+
+          <!-- Aging & Performance Breakdown -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 22px;">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Accounts Receivable Aging Schedule</div>
+                  <div class="card-subtitle">Breakdown of outstanding receivables by aging buckets</div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; text-align: center;">
+                  <div style="background: var(--slate-50); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--slate-200);">
+                    <div style="font-size: 11px; font-weight: 600; color: var(--slate-500); text-transform: uppercase;">Current (Not Due)</div>
+                    <div style="font-size: 17px; font-weight: 700; color: var(--slate-800); margin-top: 4px;" id="aging-current">$0.00</div>
+                  </div>
+                  <div style="background: var(--amber-bg); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--amber-border);">
+                    <div style="font-size: 11px; font-weight: 600; color: var(--amber-text); text-transform: uppercase;">1 - 30 Days</div>
+                    <div style="font-size: 17px; font-weight: 700; color: var(--amber-text); margin-top: 4px;" id="aging-1-30">$0.00</div>
+                  </div>
+                  <div style="background: #fff7ed; padding: 12px; border-radius: var(--radius-sm); border: 1px solid #fed7aa;">
+                    <div style="font-size: 11px; font-weight: 600; color: #c2410c; text-transform: uppercase;">31 - 60 Days</div>
+                    <div style="font-size: 17px; font-weight: 700; color: #c2410c; margin-top: 4px;" id="aging-31-60">$0.00</div>
+                  </div>
+                  <div style="background: var(--rose-bg); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--rose-border);">
+                    <div style="font-size: 11px; font-weight: 600; color: var(--rose-text); text-transform: uppercase;">60+ Days</div>
+                    <div style="font-size: 17px; font-weight: 700; color: var(--rose-text); margin-top: 4px;" id="aging-60-plus">$0.00</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">System Response Time & SLA</div>
+              </div>
+              <div class="card-body">
+                <p style="font-size: 12.5px; color: var(--slate-600); margin-bottom: 12px;">
+                  Per executive requirement: <em>"With thousands of subscriptions on the books, every page should still respond in under two seconds."</em>
+                </p>
+                <div style="background: var(--emerald-bg); border: 1px solid var(--emerald-border); padding: 10px 14px; border-radius: var(--radius-sm); margin-bottom: 12px;">
+                  <div style="font-size: 11.5px; color: var(--emerald-text); font-weight: 600;">Report Query Latency:</div>
+                  <div style="font-size: 18px; font-weight: 700; color: var(--emerald-text);" id="sla-latency-display">0.52 ms</div>
+                  <div style="font-size: 11px; color: var(--emerald-text);">Requirement: &lt; 2,000 ms (&gt;99% headroom)</div>
+                </div>
+                <a href="#audit" class="btn btn-secondary btn-sm" style="width: 100%;">Stress Test with 1,000+ Records</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Subscriptions Quick Table -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Active & Recent Subscriptions</div>
+                <div class="card-subtitle">Latest recurring accounts across all plans</div>
+              </div>
+              <a href="#subscriptions" class="btn btn-secondary btn-sm">View All Subscriptions</a>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Sub Number</th>
+                    <th>Customer</th>
+                    <th>Plan</th>
+                    <th>Next Billing</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboard-recent-subs">
+                  <!-- Injected via dashboard.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. SUBSCRIPTIONS VIEW -->
+        <section class="page-view" id="view-subscriptions">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Subscription Lifecycle Management</h2>
+              <p class="view-subheading">Monitor, pause, resume, renew, and manage add-ons for customer contracts.</p>
+            </div>
+            <div class="view-actions">
+              <a href="#quotations" class="btn btn-secondary">From Quote</a>
+              <button class="btn btn-primary" onclick="app.openNewSubscriptionModal()">New Subscription</button>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <div class="filter-group" id="sub-status-filters">
+              <button class="filter-pill active" data-status="">All</button>
+              <button class="filter-pill" data-status="active">Active</button>
+              <button class="filter-pill" data-status="quotation">Quotation</button>
+              <button class="filter-pill" data-status="confirmed">Confirmed</button>
+              <button class="filter-pill" data-status="paused">Paused</button>
+              <button class="filter-pill" data-status="closed">Closed</button>
+            </div>
+            <input type="text" class="search-input" id="sub-search-input" placeholder="Search subscriptions, customers...">
+          </div>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Subscription #</th>
+                    <th>Customer & Company</th>
+                    <th>Plan</th>
+                    <th>Frequency</th>
+                    <th>Start Date</th>
+                    <th>Next Billing</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="subscriptions-table-body">
+                  <!-- Injected via subscriptions.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. QUOTATIONS VIEW -->
+        <section class="page-view" id="view-quotations">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Quotations & Proposals</h2>
+              <p class="view-subheading">Generate sales quotes from pre-configured templates, set validity, and convert to subscriptions.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="app.openNewQuoteModal()">Create Quotation</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Quotation Pipeline</div>
+              <div class="card-subtitle">Pending and accepted offers ready for activation</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Quote #</th>
+                    <th>Customer</th>
+                    <th>Plan</th>
+                    <th>Created</th>
+                    <th>Valid Until</th>
+                    <th>Payment Terms</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="quotations-table-body">
+                  <!-- Injected via quotations.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. PRODUCTS & VARIANTS VIEW -->
+        <section class="page-view" id="view-products">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Product Catalog & Variants</h2>
+              <p class="view-subheading">Manage business software, variants with surcharges (e.g. Odoo brand +$560), and switchable add-ons.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="app.openNewProductModal()">Add Product</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Type</th>
+                    <th>Sales Price</th>
+                    <th>Cost Price</th>
+                    <th>Margin</th>
+                    <th>Variants & Surcharges</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="products-table-body">
+                  <!-- Injected via products.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. BILLING PLANS VIEW -->
+        <section class="page-view" id="view-plans">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Recurring Billing Plans</h2>
+              <p class="view-subheading">Configure intervals (daily, weekly, monthly, yearly), minimum commitments, and lifecycle policies.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="app.openNewPlanModal()">Create Plan</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Plan Name</th>
+                    <th>Frequency</th>
+                    <th>Base Price</th>
+                    <th>Min Qty</th>
+                    <th>Validity Window</th>
+                    <th>Auto-Close Policy</th>
+                    <th>Allowed Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="plans-table-body">
+                  <!-- Injected via plans.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. INVOICES VIEW -->
+        <section class="page-view" id="view-invoices">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Invoicing & Billing Engine</h2>
+              <p class="view-subheading">Automated recurring billing ledger. Generate invoices with accurate tax, discounts, and zero duplicates.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="app.openBillingDayModal()">Run Billing Day Batch</button>
+            </div>
+          </div>
+
+          <div class="filter-bar">
+            <div class="filter-group" id="invoice-status-filters">
+              <button class="filter-pill active" data-status="">All</button>
+              <button class="filter-pill" data-status="confirmed">Confirmed</button>
+              <button class="filter-pill" data-status="paid">Paid</button>
+              <button class="filter-pill" data-status="partially_paid">Partially Paid</button>
+              <button class="filter-pill" data-status="overdue">Overdue</button>
+              <button class="filter-pill" data-status="draft">Draft</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Invoice #</th>
+                    <th>Customer</th>
+                    <th>Subscription</th>
+                    <th>Issue Date</th>
+                    <th>Due Date</th>
+                    <th>Total</th>
+                    <th>Paid</th>
+                    <th>Balance Owed</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="invoices-table-body">
+                  <!-- Injected via invoices.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. PAYMENTS VIEW -->
+        <section class="page-view" id="view-payments">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Payment Collections Ledger</h2>
+              <p class="view-subheading">Record settlements across payment methods (Stripe, Bank Transfer, Check) with partial payment handling.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="app.openRecordPaymentModal()">Record Payment</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Payment #</th>
+                    <th>Invoice #</th>
+                    <th>Customer</th>
+                    <th>Payment Date</th>
+                    <th>Method</th>
+                    <th>Amount Paid</th>
+                    <th>Reference / Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="payments-table-body">
+                  <!-- Injected via payments.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 8. DISCOUNTS VIEW -->
+        <section class="page-view" id="view-discounts">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Discounts & Promotion Rules</h2>
+              <p class="view-subheading">Admin-configured discount rules (fixed amount or %, min seats/purchase, start/end dates, usage limits).</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="app.openNewDiscountModal()">New Discount Rule</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Coupon Code</th>
+                    <th>Description</th>
+                    <th>Type & Value</th>
+                    <th>Min Criteria</th>
+                    <th>Scope</th>
+                    <th>Usage Limit</th>
+                    <th>Validity Dates</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="discounts-table-body">
+                  <!-- Injected via discounts.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 9. TAXES VIEW -->
+        <section class="page-view" id="view-taxes">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Tax Rules Engine</h2>
+              <p class="view-subheading">Configure tax rates and automatic computation rules across invoices and quotations.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="app.openNewTaxModal()">New Tax Rule</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Rule Name</th>
+                    <th>Tax Rate (%)</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="taxes-table-body">
+                  <!-- Injected via taxes.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. CUSTOMERS CRM VIEW -->
+        <section class="page-view" id="view-customers">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Customer CRM Directory</h2>
+              <p class="view-subheading">Client profiles, subscription portfolio, lifetime revenue, and outstanding balance.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Customer Name</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Member Since</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="customers-table-body">
+                  <!-- Injected via customers.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- 11. CUSTOMER PORTAL VIEW -->
+        <section class="page-view" id="view-portal">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Customer Self-Service Portal</h2>
+              <p class="view-subheading">View active plans, switch add-ons on/off with live prorated feedback, and download invoices.</p>
+            </div>
+            <div class="view-actions">
+              <span class="status-pill status-active">Client Authenticated</span>
+            </div>
+          </div>
+
+          <div id="customer-portal-container">
+            <!-- Injected via portal.js -->
+          </div>
+        </section>
+
+        <!-- 12. TEAM & RBAC VIEW -->
+        <section class="page-view" id="view-team">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Staff Management & RBAC</h2>
+              <p class="view-subheading">Admin control over system users, staff invitations, and strict password policy enforcement.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="app.openInviteStaffModal()">Add Staff Member</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Authorized Team Members</div>
+              <div class="card-subtitle">Role permissions: Admin (full access), Staff (sales & billing), Customer (portal only)</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Organization</th>
+                    <th>Date Joined</th>
+                  </tr>
+                </thead>
+                <tbody id="team-table-body">
+                  <!-- Injected via team.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Password Policy Validator Demo Box -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Password Security Policy Checker</div>
+              <div class="card-subtitle">Enforcing brief requirements: more than 8 characters, uppercase, lowercase, and special character</div>
+            </div>
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Test a Password String:</label>
+                  <input type="text" class="form-control" id="policy-test-password" placeholder="e.g. Brightloop#2026" oninput="app.testPasswordStrength(this.value)">
+                </div>
+                <div class="form-group" style="display: flex; flex-direction: column; justify-content: center;">
+                  <div id="policy-check-feedback" style="font-size: 13px; font-weight: 600; color: var(--slate-500);">Enter password to check validation status</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 13. AUDIT & BENCHMARK VIEW -->
+        <section class="page-view" id="view-audit">
+          <div class="view-header">
+            <div>
+              <h2 class="view-heading">Audit Trail & Performance Benchmark</h2>
+              <p class="view-subheading">Immutable system event log and 1,000+ records bulk generator proving sub-2s query latency.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="app.generateBulkData(1000)">Stress Test: Generate 1,000 Records</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Audit Trail & Activity Log</div>
+              <div class="card-subtitle">Compliance history of state changes, billing runs, and settlements</div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>User</th>
+                    <th>Action</th>
+                    <th>Entity</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody id="audit-table-body">
+                  <!-- Injected via audit.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Universal Modal Container -->
+  <div class="modal-overlay" id="universal-modal">
+    <div class="modal-container" id="modal-container-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Modal Title</h3>
+        <button class="modal-close" onclick="app.closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Injected dynamically -->
+      </div>
+      <div class="modal-footer" id="modal-footer">
+        <button class="btn btn-secondary" onclick="app.closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Core App Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/pages/dashboard.js"></script>
+  <script src="js/pages/subscriptions.js"></script>
+  <script src="js/pages/quotations.js"></script>
+  <script src="js/pages/products.js"></script>
+  <script src="js/pages/plans.js"></script>
+  <script src="js/pages/invoices.js"></script>
+  <script src="js/pages/payments.js"></script>
+  <script src="js/pages/discounts.js"></script>
+  <script src="js/pages/taxes.js"></script>
+  <script src="js/pages/customers.js"></script>
+  <script src="js/pages/portal.js"></script>
+  <script src="js/pages/team.js"></script>
+  <script src="js/pages/audit.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      app.init();
+    });
+  </script>
+</body>
+</html>
