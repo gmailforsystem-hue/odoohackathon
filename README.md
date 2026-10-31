@@ -628,12 +628,4 @@ Potential areas for future development include:
 
 Brightloop demonstrates how a complete subscription and recurring billing workflow can be implemented using a lightweight architecture, persistent relational data, REST APIs, automated billing logic, financial calculations, role-based access control, and automated testing.
 
----
 
-## License
-
-Add an appropriate license for your project, such as the MIT License, before publishing or distributing the repository.
-
----
-
-**Built with Python, SQLite, Vanilla JavaScript, and CSS.**
