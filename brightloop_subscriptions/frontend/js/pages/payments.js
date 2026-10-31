@@ -1,4 +1,4 @@
-/**
+/*
  * Payments Ledger Page Controller
  * Handles recording full and partial payments, method reconciliation, and settlement audit logs.
  */
