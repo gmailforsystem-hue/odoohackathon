@@ -1,4 +1,4 @@
-/**
+/*
  * Quotations Page Controller
  * Handles quotation templates, proposal generation, and conversion to active subscription.
  */
