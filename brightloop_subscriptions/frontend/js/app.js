@@ -1,4 +1,4 @@
-/**
+/*
  * Brightloop Software - Main Application Core & Router
  * Manages routing, API client with latency timing, universal modals, toasts, and RBAC persona switching.
  */
