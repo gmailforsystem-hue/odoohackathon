@@ -1,4 +1,4 @@
-/**
+/*
  * Discounts & Promotions Page Controller
  * Handles admin discount rules: fixed or percentage, min spend/quantity thresholds,
  * product-specific or subscription-wide scope, validity dates, and usage caps.
