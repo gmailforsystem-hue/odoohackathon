@@ -1,4 +1,4 @@
-/**
+/*
  * Tax Engine Page Controller
  * Handles admin configuration of tax rules and calculation percentages.
  */
