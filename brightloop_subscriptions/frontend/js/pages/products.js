@@ -1,4 +1,4 @@
-/**
+/*
  * Products & Variants Page Controller
  * Handles product catalog, variants with surcharges (e.g. Odoo brand +$560), and customer-switchable add-ons.
  */
