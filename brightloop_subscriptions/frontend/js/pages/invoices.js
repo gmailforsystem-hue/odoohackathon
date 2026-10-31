@@ -1,4 +1,4 @@
-/**
+/*
  * Invoices Page Controller
  * Manages recurring invoice lifecycle, PDF/printable layout, tax/discount display, and status transitions.
  */
