@@ -1,4 +1,4 @@
-/**
+/*
  * Team & RBAC Page Controller
  * Handles staff management, role permissions (Admin, Staff, Customer),
  * and password policy verification (>8 chars, uppercase, lowercase, special char).
