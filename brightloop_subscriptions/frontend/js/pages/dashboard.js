@@ -1,4 +1,4 @@
-/**
+/*
  * Dashboard View Controller
  * Loads executive financial summary, aging schedule, and recent subscriptions.
  */
