@@ -1,4 +1,4 @@
-/**
+/*
  * Audit & Benchmark Page Controller
  * Displays immutable system event audit trail and scale-up stress tester proving sub-2s query latency.
  */
