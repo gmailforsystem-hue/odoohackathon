@@ -1,4 +1,4 @@
-/**
+/*
  * Billing Plans Page Controller
  * Manages recurring intervals (daily, weekly, monthly, yearly), minimum commitments,
  * validity dates, and lifecycle policies (auto-close, early close, pause, renew).
