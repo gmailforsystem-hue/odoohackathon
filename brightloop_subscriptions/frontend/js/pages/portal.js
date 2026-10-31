@@ -1,4 +1,4 @@
-/**
+/*
  * Customer Self-Service Portal Controller
  * Dedicated portal for customers to manage their own subscriptions, toggle add-ons
  * without contacting support, and view/settle invoices.
